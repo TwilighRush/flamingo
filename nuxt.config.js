@@ -5,6 +5,7 @@
  */
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
+  ssr: true,
   head: {
     title: "flamingo",
     htmlAttrs: {
@@ -17,6 +18,11 @@ export default {
       { name: "format-detection", content: "telephone=no" },
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+    script: [
+      {
+        src: "//at.alicdn.com/t/font_3065393_lfe2hj5rnsb.js",
+      },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -42,4 +48,8 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+  server: {
+    host: "0.0.0.0",
+    port: 8080,
+  },
 };

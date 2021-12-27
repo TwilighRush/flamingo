@@ -4,7 +4,11 @@
  * @Description: filte description
 -->
 <template>
-  <div class="header-wrapper"></div>
+  <div class="header-wrapper">
+    <svg class="icon" aria-hidden="true">
+      <use xlink:href="#icon-icon-liebiao"></use>
+    </svg>
+  </div>
 </template>
 <script>
 export default {
@@ -12,11 +16,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-// @mixin whenSmallScreen {
-//   @media screen and (max-width: 719px) {
-//     @content;
-//   }
-// }
 .header-wrapper {
   background-color: var(--main);
   height: 64px;
