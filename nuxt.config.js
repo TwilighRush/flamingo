@@ -44,7 +44,10 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
+  modules: [
+    // https://go.nuxtjs.dev/axios
+    "@nuxtjs/axios",
+  ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
