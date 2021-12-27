@@ -1,0 +1,56 @@
+@import "./helpers/color";
+
+:root {
+  // 主题色
+  --main: var(--color-new-green);
+
+  // 基本颜色
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-light-grey: #eceff1;
+  --color-superlight-grey: #f9f9f9;
+  --color-disabled-grey: #c8cbcc;
+  --color-primary: var(--color-black);
+  --color-secondary: var(--color-white);
+
+  // 默认文本 & body
+  --color-text-dark-grey: #363738;
+  --color-text-light-grey: #9a9b9b;
+  --body: var(--color-white);
+  --text: var(--color-black);
+  --text-disabled: var(--color-disabled-grey);
+  --link: var(--color-text-dark-grey);
+  --link-hover: var(--color-black);
+
+  // 状态色status
+  --color-error-red: #ae4747;
+  --color-warning-yellow: #da9511;
+  --color-ash-green: #a7c1b9;
+  --color-new-green: #92d39f;
+  --status-error: var(--color-error-red);
+  --status-warning: var(--color-warning-yellow);
+  --status-success: var(--color-new-green);
+
+  // 会员
+  --color-membership-gold: #b7a478;
+  --color-membership-dark-gold: #8a7442;
+  --cn-golden-member: #cbb773;
+  --cn-sliver-member: #98989a;
+  --cn-bronze-member: #bd8062;
+  --global-golden-member: #a39581;
+  --global-sliver-member: #a6c1b9;
+  --global-bronze-member: #b76870;
+  --global-prospect-member: #7e90a0;
+
+  // 活动页
+  @include generate-color-variants(--blue-primary, #0286cd);
+  --color-clp-primary: #0286cd;
+  --color-clp-dark-blue: #025f8e;
+  --color-clp-loop-pink: #d83f56;
+  --color-clp-loop-dark-pink: #b93044;
+  --color-clp-loop-sand: #b4a58f;
+
+  // 遮罩
+  --color-toast-bg: rgba(0, 0, 0, 0.8);
+  --color-overlay-bg: rgba(0, 0, 0, 0.6);
+}

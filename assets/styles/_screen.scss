@@ -1,0 +1,64 @@
+// 小屏
+@mixin whenSmallScreen {
+  @media screen and (max-width: 719px) {
+    @content;
+  }
+}
+
+// 非小屏
+@mixin whenNotSmallScreen {
+  @media screen and (min-width: 720px) {
+    @content;
+  }
+}
+
+// 中屏
+@mixin whenMediumScreen {
+  @media screen and (min-width: 720px) and (max-width: 1439px) {
+    @content;
+  }
+}
+
+// 非中屏
+@mixin whenNotMediumScreen {
+  @include whenSmallScreen {
+    @content;
+  }
+  @include whenLargeScreen {
+    @content;
+  }
+}
+
+// 720~959
+@mixin whenMediumToSmallScreen {
+  @media screen and (min-width: 720px) and (max-width: 959px) {
+    @content;
+  }
+}
+
+// 960~1439
+@mixin whenMediumToLargeScreen {
+  @media screen and (min-width: 960px) and (max-width: 1439px) {
+    @content;
+  }
+}
+
+// 大屏
+@mixin whenLargeScreen {
+  @media screen and (min-width: 1440px) {
+    @content;
+  }
+}
+
+// 非大屏
+@mixin whenNotLargeScreen {
+  @media screen and (max-width: 1439px) {
+    @content;
+  }
+}
+
+@mixin whenIE {
+  @media screen and(-ms-high-contrast: active), (-ms-high-contrast: none) {
+    @content;
+  }
+}
