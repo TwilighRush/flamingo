@@ -6,6 +6,15 @@
 <template>
   <div>
     <Header />
+    <meting-js
+      server="netease"
+      type="playlist"
+      id="2189979178"
+      fixed="true"
+      lrc-type="0"
+      list-folded="true"
+    >
+    </meting-js>
     <nuxt />
   </div>
 </template>

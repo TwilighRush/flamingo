@@ -4,11 +4,21 @@
  * @Description: filte description
 -->
 <template>
-  <div>这里是首页</div>
+  <div>
+    <Banner />
+    <Banner />
+    <Banner />
+    <Banner />
+    <Banner />
+  </div>
 </template>
 
 <script>
+import Banner from "../components/Banner";
 export default {
   name: "Index",
+  components: {
+    Banner,
+  },
 };
 </script>

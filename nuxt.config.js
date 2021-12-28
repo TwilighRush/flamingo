@@ -17,10 +17,27 @@ export default {
       { hid: "description", name: "description", content: "" },
       { name: "format-detection", content: "telephone=no" },
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+    link: [
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      // aplayer https://gitcode.net/mirrors/metowolf/MetingJS?utm_source=csdn_github_accelerator
+      {
+        rel: "stylesheet",
+        href: "https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css",
+      },
+    ],
     script: [
       {
         src: "//at.alicdn.com/t/font_3065393_lfe2hj5rnsb.js",
+      },
+      // aplayer https://gitcode.net/mirrors/metowolf/MetingJS?utm_source=csdn_github_accelerator
+      {
+        src: "https://s3.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js",
+      },
+      {
+        src: "https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js",
+      },
+      {
+        src: "https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js",
       },
     ],
   },

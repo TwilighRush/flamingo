@@ -5,16 +5,23 @@
 -->
 <template>
   <div>
-    <div class="header-wrapper">
+    <div class="header-wrapper" :style="colorful">
       <div class="icon-box" @click="showSideBar = true">
         <i class="iconfont icon-menu"></i>
       </div>
+
       <div class="logo-title">
         <img class="logo" src="../../assets/image/logo.png" alt="logo" />
         <a class="title">Flamingo</a>
       </div>
+
       <div class="menu">
-        <a v-for="(item, index) in menuOptions" :key="index" class="menu-item">
+        <a
+          v-for="(item, index) in menuOptions"
+          :key="index"
+          class="menu-item"
+          @click="handleMenuClick(item)"
+        >
           <i class="iconfont icon-menu" :class="item.icon"></i>
         </a>
       </div>
@@ -37,6 +44,7 @@ export default {
   data() {
     return {
       showSideBar: false,
+      bgColor: 0,
       menuOptions: [
         {
           name: "首页",
@@ -51,33 +59,51 @@ export default {
         {
           name: "搜索",
           icon: "icon-search",
-          to: "/",
+          to: "/search",
         },
       ],
     };
   },
+  computed: {
+    colorful() {
+      let styles = { background: `hsl(187, 100%, 33%, ${this.bgColor})` };
+      if (this.bgColor >= 1) {
+        styles.boxShadow =
+          "0 2px 5px 0 rgb(0 0 0 / 16%), 0 7px 10px 0 rgb(0 0 0 / 12%)";
+      }
+      return styles;
+    },
+  },
   mounted() {
-    console.log("---", file);
+    // console.log("---", file);
+    window.addEventListener("scroll", this.handleScroll);
   },
   methods: {
+    handleMenuClick(item) {
+      this.$router.push(item.to);
+    },
     handleMaskClick() {
       this.showSideBar = false;
+    },
+    handleScroll(e) {
+      const height =
+        document.documentElement.scrollTop || document.body.scrollTop;
+      this.bgColor = height / 300;
     },
   },
 };
 </script>
 <style lang="scss" scoped>
 .header-wrapper {
+  position: fixed;
+  z-index: 9;
+  top: 0;
   user-select: none;
-  position: relative;
   display: flex;
   align-self: center;
   justify-content: space-around;
-  background: var(--main);
-  // opacity: 0;
   height: 64px;
   width: 100%;
-  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 7px 10px 0 rgb(0 0 0 / 12%);
   @include whenSmallScreen {
     height: 56px;
   }
@@ -85,7 +111,7 @@ export default {
 
 .icon-box {
   position: absolute;
-  left: 10px;
+  left: 20px;
   line-height: 56px;
   @include whenNotSmallScreen {
     display: none;
@@ -114,6 +140,8 @@ export default {
     color: var(--color-white);
     font-size: 1.2rem;
     line-height: 64px;
+    text-shadow: var(--color-text-light-grey) 0.2em 0.2em 0.2em;
+
     @include whenSmallScreen {
       line-height: 56px;
     }
@@ -137,9 +165,10 @@ export default {
     .icon-menu {
       font-size: 26px;
       color: var(--color-white);
+      text-shadow: var(--color-text-light-grey) 0.2em 0.2em 0.2em;
     }
     &:hover {
-      background-color: hsl(0, 0%, 61%, 0.2);
+      background-color: rgba(182, 182, 182, 0.3);
     }
   }
 }
