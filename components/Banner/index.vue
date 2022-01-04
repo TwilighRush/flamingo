@@ -5,7 +5,18 @@
 -->
 <template>
   <div class="banner-wrapper">
-    <img class="background-walk" src="../../assets/image/banner.jpg" alt="" />
+    <div class="banner-swiper">
+      <transition-group name="bannerFade">
+        <img
+          v-for="(item, index) in imgGroup"
+          :key="index"
+          v-show="visualIndex === index"
+          class="banner-img"
+          :src="item"
+          alt="banner"
+        />
+      </transition-group>
+    </div>
     <div class="text-box">
       <div class="title">Flamingo</div>
       <div class="subtitle">Life always needs a little fun</div>
@@ -23,7 +34,18 @@ export default {
     return {
       timmer: null,
       scrollHeight: 0,
+      imgGroup: [
+        require("../../assets/image/banner1.jpg"),
+        require("../../assets/image/banner2.jpg"),
+      ],
+      visualIndex: 0,
     };
+  },
+  mounted() {
+    this.startPlay();
+  },
+  destroyed() {
+    clearInterval(this.timmer);
   },
   methods: {
     handleWatchMore() {
@@ -31,6 +53,15 @@ export default {
       window.scrollTo({
         top: clientHeight,
       });
+    },
+    startPlay() {
+      this.timmer = setInterval(() => {
+        if (this.visualIndex + 1 == this.imgGroup.length) {
+          this.visualIndex = 0;
+        } else {
+          this.visualIndex = this.visualIndex + 1;
+        }
+      }, 7000);
     },
   },
 };
@@ -43,11 +74,25 @@ export default {
   position: relative;
   height: 100vh;
   width: 100%;
-  & > img {
+  .banner-swiper {
     height: 100%;
     width: 100%;
-    object-fit: cover;
+    .banner-img {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
   }
+}
+
+.bannerFade-enter-active,
+.bannerFade-leave-active {
+  transition: all 2s;
+}
+.bannerFade-enter,
+.bannerFade-leave-to {
+  opacity: 0;
 }
 
 .text-box {
